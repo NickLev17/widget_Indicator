@@ -4,14 +4,13 @@ Indicator::Indicator(QWidget *parent) : QWidget(parent)
 {
     setMouseTracking(true);
     m_indicator_point=QPoint{0,0};
-    m_widget_size.setWidth(55);// размеры виджета
+    m_widget_size.setWidth(55);
     m_widget_size.setHeight(65);
     setBaseSize(m_widget_size);
-    m_width=m_widget_size.width()-3;// чтобы отрисоваться нормально
-    m_height=m_widget_size.height()-15;// отступ снизу чтобы хватило размера на текст
+    m_width=m_widget_size.width()-3;
+    m_height=m_widget_size.height()-15;
     m_txt_point=QPoint(5,65);
     dafaultInitialisation();
-
 }
 
 void Indicator::setInformMessage(const QString& message)
@@ -111,7 +110,6 @@ void Indicator::dafaultInitialisation()
     m_frame.setWidth(2);
     m_frame.setStyle(Qt::SolidLine);
     m_name="";
-
 }
 
 void Indicator::paintEvent(QPaintEvent *event)
@@ -163,7 +161,6 @@ void Indicator::paintEvent(QPaintEvent *event)
 
 void Indicator::mouseDoubleClickEvent(QMouseEvent *event)
 {
-
     if(m_state==STATE::On)
     {
 
@@ -179,7 +176,6 @@ void Indicator::mouseDoubleClickEvent(QMouseEvent *event)
     {
         event->ignore();
     }
-
 }
 
 void Indicator::mousePressEvent(QMouseEvent *event)
