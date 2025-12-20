@@ -18,9 +18,9 @@
 
 enum class STATE
 {
-    Off,//отключена
-    On,//включена
-    Error//ошибка
+    Off,
+    On,
+    Error
 };
 
 Q_DECLARE_METATYPE(STATE)  // Для QVariant
@@ -30,14 +30,14 @@ class Indicator : public QWidget
     Q_ENUM(STATE)  // Регистрация для Qt meta-system
     Q_OBJECT
 
-    STATE m_state;//состояние лампы
-    QSize m_widget_size;// размер виджета всего
-    QPoint  m_indicator_point;// начальная точка виджета
-    QPoint m_txt_point;// нач точка текста
-    int m_width;//размер ламмы
-    int m_height;//разрме ламы
-    QPen m_frame;// рамка виджета
-    QPen m_text_pen;// текст
+    STATE m_state;
+    QSize m_widget_size;
+    QPoint  m_indicator_point;
+    QPoint m_txt_point;
+    int m_width;
+    int m_height;
+    QPen m_frame;
+    QPen m_text_pen;
     QString m_name;
     QColor m_color_On;
     QColor m_color_Off;
@@ -54,15 +54,11 @@ class Indicator : public QWidget
     Q_PROPERTY(QPen frame READ frame WRITE setFrame NOTIFY changeFrame);
     Q_PROPERTY(QColor color_text READ color_text WRITE setColor_text NOTIFY changeColorText);
 
-
-
 public:
     explicit Indicator(QWidget *parent = nullptr);
 
     void setInformMessage(const QString& message);
-
     void setErrorMessage(const QString& message);
-
 
 signals:
     bool changeState();
@@ -76,31 +72,24 @@ public slots:
     void updateStatePainter();
 
     void setColor_text(const QColor& color_text);
-
     QColor color_text() const;
 
     void setFrame(const QPen& frame);
-
     QPen frame() const;
 
     void setColor_On(const QColor& color_On);
-
     QColor color_On() const;
 
     void setColor_Off(const QColor& color_Off);
-
     QColor color_Off() const;
 
     void setColor_Error(const QColor& color_Error);
-
     QColor color_Error() const;
 
     STATE state() const;
-
     void setState(const STATE& state);
 
     QString name() const;
-
     void setName(const QString& name);
 
 private:
@@ -108,9 +97,7 @@ private:
 
 protected:
     void paintEvent(QPaintEvent *event) override;
-
     void mouseDoubleClickEvent(QMouseEvent *event) override;
-
     void mousePressEvent(QMouseEvent *event) override;
 
 };
