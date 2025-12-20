@@ -23,11 +23,11 @@ enum class STATE
     Error
 };
 
-Q_DECLARE_METATYPE(STATE)  // Для QVariant
+Q_DECLARE_METATYPE(STATE)
 
 class Indicator : public QWidget
 {
-    Q_ENUM(STATE)  // Регистрация для Qt meta-system
+    Q_ENUM(STATE)
     Q_OBJECT
 
     STATE m_state;
