@@ -94,6 +94,7 @@ public slots:
 
 private:
     void dafaultInitialisation();
+    void setGradient(QPainter& painter,const QPainterPath& path,const QColor& color);
 
 protected:
     void paintEvent(QPaintEvent *event) override;
