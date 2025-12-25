@@ -61,11 +61,11 @@ public:
     void setErrorMessage(const QString& message);
 
 signals:
-    bool changeState();
-    bool changeColorText();
-    bool changeFrame();
-    bool changeColorState();
-    bool changeName();
+    void changeState();
+    void changeColorText();
+    void changeFrame();
+    void changeColorState();
+    void changeName();
 
 public slots:
 
