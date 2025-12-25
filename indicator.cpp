@@ -111,7 +111,15 @@ void Indicator::dafaultInitialisation()
     m_frame.setStyle(Qt::SolidLine);
     m_name="";
 }
-
+void Indicator::setGradient(QPainter& painter,const QPainterPath& path,const QColor& color)
+{
+    QRadialGradient radial_1(QPoint(20,20),20);
+    radial_1.setColorAt(0,Qt::white);
+    radial_1.setColorAt(1,color);//цвет к которому будет применен градиент
+    painter.fillPath(path,radial_1);//отрисовка и заливка виджета
+    painter.setPen(m_color_text);
+    painter.drawText(m_txt_point,m_name);//установка текста на виджете
+}
 void Indicator::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
@@ -128,32 +136,17 @@ void Indicator::paintEvent(QPaintEvent *event)
     {
     case STATE::On:
     {
-        QRadialGradient radial_1(QPoint(20,20),20);
-        radial_1.setColorAt(0,Qt::white);
-        radial_1.setColorAt(1,m_color_On);
-        painter.fillPath(path,radial_1);
-        painter.setPen(m_color_text);
-        painter.drawText(m_txt_point,m_name);
+        setGradient(painter,path,m_color_On);
         break;
     }
     case STATE::Error:
     {
-        QRadialGradient radial_2(QPoint(20,20),20);
-        radial_2.setColorAt(0,Qt::white);
-        radial_2.setColorAt(1,m_color_Error);
-        painter.fillPath(path,radial_2);
-        painter.setPen(m_color_text);
-        painter.drawText(m_txt_point,m_name);
+        setGradient(painter,path,m_color_Error);
         break;
     }
     case STATE::Off:
     {
-        QRadialGradient radial_2(QPoint(20,20),20);
-        radial_2.setColorAt(0,Qt::white);
-        radial_2.setColorAt(1,m_color_Off);
-        painter.fillPath(path,radial_2);
-        painter.setPen(m_color_text);
-        painter.drawText(m_txt_point,m_name);
+        setGradient(painter,path,m_color_Off);
         break;
     }
     }
